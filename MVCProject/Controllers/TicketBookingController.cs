@@ -4,21 +4,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DapperDataAccessLayer;
 
 namespace MVCProject.Controllers
 {
-    public class TicketBookingController1 : Controller
+    public class TicketBookingController : Controller
     {
-        // GET: TicketBookingController1
+        private readonly ITicketSP Detail;
+
+        public TicketBookingController()
+        {
+            Detail = new TicketBookingSP();
+        }
         public ActionResult Index()
         {
-            return View();
+            var ticket = Detail.ReadSP();
+            return View("View" , ticket);
         }
 
         // GET: TicketBookingController1/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var ticket = Detail.ReadbyIDSP(id);
+            return View("TicketBookingSP",ticket);
         }
 
         // GET: TicketBookingController1/Create

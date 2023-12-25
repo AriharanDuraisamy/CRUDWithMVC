@@ -1,0 +1,54 @@
+﻿@model DapperDataAccessLayer.TicketModelSP
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TicketModelSP</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PASSENGERID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PASSENGERID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TICKETNUMBER)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TICKETNUMBER)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PASSENGERNAME)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PASSENGERNAME)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PHNUMBER)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PHNUMBER)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EMAILID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EMAILID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.JOURNEYDATE)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JOURNEYDATE)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PASSENGERID }) |
+    <a asp-action="Index">Back to List</a>
+</div>

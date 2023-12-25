@@ -1,0 +1,53 @@
+﻿@model DapperDataAccessLayer.TicketModelSP
+
+@{
+    ViewData["Title"] = "AddDetails";
+}
+
+<h1>AddDetails</h1>
+
+<h4>TicketModelSP</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddDetails">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TICKETNUMBER" class="control-label"></label>
+                <input asp-for="TICKETNUMBER" class="form-control" />
+                <span asp-validation-for="TICKETNUMBER" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PASSENGERNAME" class="control-label"></label>
+                <input asp-for="PASSENGERNAME" class="form-control" />
+                <span asp-validation-for="PASSENGERNAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PHNUMBER" class="control-label"></label>
+                <input asp-for="PHNUMBER" class="form-control" />
+                <span asp-validation-for="PHNUMBER" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EMAILID" class="control-label"></label>
+                <input asp-for="EMAILID" class="form-control" />
+                <span asp-validation-for="EMAILID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JOURNEYDATE" class="control-label"></label>
+                <input asp-for="JOURNEYDATE" class="form-control" />
+                <span asp-validation-for="JOURNEYDATE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

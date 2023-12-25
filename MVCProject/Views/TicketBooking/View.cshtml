@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DapperDataAccessLayer.TicketModelSP>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PASSENGERID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TICKETNUMBER)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PASSENGERNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PHNUMBER)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMAILID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JOURNEYDATE)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PASSENGERID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TICKETNUMBER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PASSENGERNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHNUMBER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAILID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JOURNEYDATE)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id  = item.PASSENGERID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.PASSENGERID }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
