@@ -9,6 +9,7 @@ using Dapper;
 namespace DapperDataAccessLayer
 {
     public class TicketBookingSP : ITicketSP
+
     {
         public void InsertSP(TicketModelSP Details)
         {
@@ -92,11 +93,11 @@ namespace DapperDataAccessLayer
                 var con = new SqlConnection(connectionString);
                 con.Open();
                 var selectQuery = $"exec selectidsp  {PASSENGERID} ";
-                var products = con.QueryFirstOrDefault<TicketModelSP>(selectQuery);
+                var result = con.QueryFirstOrDefault<TicketModelSP>(selectQuery);
 
                 con.Close();
 
-                return products;
+                return result;
             }
 
             catch (SqlException sql)

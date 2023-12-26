@@ -4,10 +4,10 @@
     ViewData["Title"] = "View";
 }
 
-<h1>View</h1>
+<h1 style="color:aqua">Ticket Details</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" style="color:red">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -57,7 +57,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id  = item.PASSENGERID }) |
                 @Html.ActionLink("Details", "Details", new { id=item.PASSENGERID }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new {  id=item.PASSENGERID })
             </td>
         </tr>
 }

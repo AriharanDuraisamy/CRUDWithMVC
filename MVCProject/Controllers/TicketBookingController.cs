@@ -26,22 +26,23 @@ namespace MVCProject.Controllers
         public ActionResult Details(int id)
         {
             var ticket = Detail.ReadbyIDSP(id);
-            return View("TicketBookingSP",ticket);
+            return View("Details",ticket);
         }
 
         // GET: TicketBookingController1/Create
         public ActionResult Create()
         {
-            return View();
+            return View("AddDetails", new TicketModelSP());
         }
 
         // POST: TicketBookingController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Add(TicketModelSP tkt)
         {
             try
             {
+                Detail.InsertSP(tkt);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -53,16 +54,18 @@ namespace MVCProject.Controllers
         // GET: TicketBookingController1/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var tkt = Detail.ReadbyIDSP(id);
+            return View("Edit",tkt);
         }
 
         // POST: TicketBookingController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id,TicketModelSP tkt)
         {
             try
             {
+                Detail.UpdateSP(id, tkt);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -74,16 +77,18 @@ namespace MVCProject.Controllers
         // GET: TicketBookingController1/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var tkt = Detail.ReadbyIDSP(id);
+            return View("Delete",tkt);
         }
 
         // POST: TicketBookingController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, TicketModelSP tkt)
         {
             try
             {
+                Detail.DeleteSP(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
