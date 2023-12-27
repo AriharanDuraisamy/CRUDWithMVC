@@ -5,27 +5,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DapperDataAccessLayer;
+using Microsoft.Extensions.Configuration;
 
 namespace MVCProject.Controllers
 {
     public class TicketBookingController : Controller
     {
-        private readonly ITicketSP Detail;
+        private readonly ITicketSP _Result;
+        private readonly string _connectionstring;
 
-        public TicketBookingController()
+        public TicketBookingController(ITicketSP Results, IConfiguration configuration)
         {
-            Detail = new TicketBookingSP();
+            _Result =Results;
+            _connectionstring = configuration.GetConnectionString("DbConnection");
         }
         public ActionResult Index()
         {
-            var ticket = Detail.ReadSP();
+            var ticket = _Result.ReadSP();
             return View("View" , ticket);
         }
 
         // GET: TicketBookingController1/Details/5
         public ActionResult Details(int id)
         {
-            var ticket = Detail.ReadbyIDSP(id);
+            var ticket = _Result.ReadbyIDSP(id);
             return View("Details",ticket);
         }
 
@@ -42,7 +45,7 @@ namespace MVCProject.Controllers
         {
             try
             {
-                Detail.InsertSP(tkt);
+                _Result.InsertSP(tkt);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -54,7 +57,7 @@ namespace MVCProject.Controllers
         // GET: TicketBookingController1/Edit/5
         public ActionResult Edit(int id)
         {
-            var tkt = Detail.ReadbyIDSP(id);
+            var tkt = _Result.ReadbyIDSP(id);
             return View("Edit",tkt);
         }
 
@@ -65,7 +68,7 @@ namespace MVCProject.Controllers
         {
             try
             {
-                Detail.UpdateSP(id, tkt);
+                _Result.UpdateSP(id, tkt);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -77,7 +80,7 @@ namespace MVCProject.Controllers
         // GET: TicketBookingController1/Delete/5
         public ActionResult Delete(int id)
         {
-            var tkt = Detail.ReadbyIDSP(id);
+            var tkt = _Result.ReadbyIDSP(id);
             return View("Delete",tkt);
         }
 
@@ -88,7 +91,7 @@ namespace MVCProject.Controllers
         {
             try
             {
-                Detail.DeleteSP(id);
+                _Result.DeleteSP(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
