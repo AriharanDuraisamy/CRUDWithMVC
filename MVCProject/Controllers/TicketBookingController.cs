@@ -11,10 +11,10 @@ namespace MVCProject.Controllers
 {
     public class TicketBookingController : Controller
     {
-        private readonly ITicketSP _Result;
+        private readonly ITicketBooking _Result;
         private readonly string _connectionstring;
 
-        public TicketBookingController(ITicketSP Results, IConfiguration configuration)
+        public TicketBookingController(ITicketBooking Results, IConfiguration configuration)
         {
             _Result =Results;
             _connectionstring = configuration.GetConnectionString("DbConnection");
@@ -35,13 +35,13 @@ namespace MVCProject.Controllers
         // GET: TicketBookingController1/Create
         public ActionResult Create()
         {
-            return View("AddDetails", new TicketModelSP());
+            return View("AddDetails", new TicketModel());
         }
 
         // POST: TicketBookingController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add(TicketModelSP tkt)
+        public ActionResult Add(TicketModel tkt)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace MVCProject.Controllers
         // POST: TicketBookingController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id,TicketModelSP tkt)
+        public ActionResult Edit(int id,TicketModel tkt)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace MVCProject.Controllers
         // POST: TicketBookingController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, TicketModelSP tkt)
+        public ActionResult Delete(int id, TicketModel tkt)
         {
             try
             {

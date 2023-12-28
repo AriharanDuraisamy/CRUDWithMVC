@@ -9,22 +9,22 @@ using Microsoft.Extensions.Configuration;
     
 namespace DapperDataAccessLayer
 {
-    public class TicketBookingSP : ITicketSP
+    public class TicketBooking : ITicketBooking
 
     {
         public string connectionString;
-        public TicketBookingSP(IConfiguration configuration)
+        public TicketBooking(IConfiguration configuration)
         {
             connectionString = configuration.GetConnectionString("DbConnection");
         }
 
-        public void InsertSP(TicketModelSP Details)
+        public void InsertSP(TicketModel Details)
         {
             try
             {
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var insertQuery = $"exec insertsp { Details.TICKETNUMBER},'{Details.PASSENGERNAME}' ,{ Details.PHNUMBER} ,'{ Details.EMAILID}' ,'{Details.JOURNEYDATE}'";
+                var insertQuery = $"exec insertsp '{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PhoneNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}'";
                 con.Execute(insertQuery);
                 con.Close();
 
@@ -40,13 +40,13 @@ namespace DapperDataAccessLayer
             }
         }
 
-        public void DeleteSP(long PASSENGERID)
+        public void DeleteSP(long PassengerID)
         {
             try
             {
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var deleteQuery = $"exec deletesp {PASSENGERID}";
+                var deleteQuery = $"exec deletesp {PassengerID}";
                 con.Execute(deleteQuery);
                 con.Close();
 
@@ -61,14 +61,14 @@ namespace DapperDataAccessLayer
                 throw;
             }
         }
-        public List<TicketModelSP> ReadSP()
+        public List<TicketModel> ReadSP()
         {
             try
             { 
                 var con = new SqlConnection(connectionString);
                 con.Open();
                 var selectQuery = $"exec selectsp";
-                var ticket = con.Query<TicketModelSP>(selectQuery);
+                var ticket = con.Query<TicketModel>(selectQuery);
 
                 con.Close();
 
@@ -85,14 +85,14 @@ namespace DapperDataAccessLayer
                 throw;
             }
         }
-        public TicketModelSP ReadbyIDSP(long PASSENGERID)
+        public TicketModel ReadbyIDSP(long PassengerID)
         {
             try
             {
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var selectQuery = $"exec selectidsp  {PASSENGERID} ";
-                var result = con.QueryFirstOrDefault<TicketModelSP>(selectQuery);
+                var selectQuery = $"exec selectidsp  {PassengerID} ";
+                var result = con.QueryFirstOrDefault<TicketModel>(selectQuery);
 
                 con.Close();
 
@@ -109,13 +109,13 @@ namespace DapperDataAccessLayer
                 throw;
             }
         }
-        public void UpdateSP(int ticupd, TicketModelSP Details)
+        public void UpdateSP(int ticupd, TicketModel Details)
         {
             try
             {
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var updateQuery = $"exec updatesp  {ticupd} ,{ Details.TICKETNUMBER},'{Details.PASSENGERNAME}' ,{ Details.PHNUMBER} ,'{ Details.EMAILID}' ,'{Details.JOURNEYDATE}'";
+                var updateQuery = $"exec updatesp  {ticupd} ,'{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PhoneNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}'";
                 con.Execute(updateQuery);
 
             }
