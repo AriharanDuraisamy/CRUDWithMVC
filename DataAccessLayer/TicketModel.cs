@@ -32,7 +32,7 @@ namespace DapperDataAccessLayer
         public string PassengerName { get; set; }
         [Required(ErrorMessage = "Must enter your Phone Number")]
         
-        public long PhoneNumber { get; set; }
+        public long PHNumber { get; set; }
         [EmailAddress(ErrorMessage ="Must be in proper format")]
         public string EmailID { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}") ]

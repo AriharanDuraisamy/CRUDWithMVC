@@ -24,7 +24,7 @@ namespace DapperDataAccessLayer
             {
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var insertQuery = $"exec insertsp '{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PhoneNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}'";
+                var insertQuery = $"exec insertsp '{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PHNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}'";
                 con.Execute(insertQuery);
                 con.Close();
 
@@ -115,7 +115,7 @@ namespace DapperDataAccessLayer
             {
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var updateQuery = $"exec updatesp  {ticupd} ,'{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PhoneNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}'";
+                var updateQuery = $"exec updatesp  {ticupd} ,'{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PHNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}'";
                 con.Execute(updateQuery);
 
             }
