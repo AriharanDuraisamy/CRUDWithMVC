@@ -6,6 +6,7 @@ namespace DapperDataAccessLayer
 {
     public interface ITicketBooking
     {
+        
         public void InsertSP(TicketModel Details);
         public void DeleteSP(long PassengerID);
         public TicketModel ReadbyIDSP(long PassengerID);

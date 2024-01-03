@@ -17,8 +17,29 @@ namespace DapperDataAccessLayer
         {
             connectionString = configuration.GetConnectionString("DbConnection");
         }
+        /*public bool ValidateUser(string email, string password)
+        {
+            string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
 
-        public void InsertSP(TicketModel Details)
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", email);
+                    command.Parameters.AddWithValue("@Password", password); // Note: You should hash the password before comparing in a real scenario
+
+                    connection.Open();
+                    int count = (int)command.ExecuteScalar();
+
+                    return count > 0; // If count is greater than zero, the user with provided credentials exists
+                }
+            }
+        }*/
+    
+
+
+
+public void InsertSP(TicketModel Details)
         {
             try
             {

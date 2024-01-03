@@ -14,11 +14,26 @@ namespace MVCProject.Controllers
         {
             return View("LoginForm",new LoginModel());
         }
-       /* [HttpPost]
-        public IActionResult Login(LoginModel log)
+       /* public ActionResult Login(LoginModel log)
         {
-            return Redirect("/Home/IndeX");
-                
+            // Assuming you have a method to authenticate users in your data access layer
+            bool isValid = DapperDataAccessLayer.ValidateUser(log.EmailID, log.Password);
+            if (isValid)
+            {
+                // Authentication successful, perform necessary actions (e.g., set authentication cookie)
+                return RedirectToAction("/Home/Index"); // Redirect to a dashboard or home page
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid username or password");
+                return View("LoginForm",log); // Return to the login page with an error message
+            }
         }*/
+        /* [HttpPost]
+         public IActionResult Login(LoginModel log)
+         {
+             return Redirect("/Home/IndeX");
+
+         }*/
     }
 }
