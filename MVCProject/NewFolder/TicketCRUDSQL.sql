@@ -10,7 +10,7 @@ CREATE TABLE ETicket
 )
 Select * from ETicket
 drop table ETicket
-
+go
 CREATE procedure InsertSP(@TICKETNUMBER bigint ,@PASSENGERNAME nvarchar(50),@PHNUMBER bigint,@EMAILID nvarchar(50),@JOURNEYDATE datetime2(7))
 AS
 BEGIN
@@ -23,6 +23,7 @@ exec InsertSP 104,'siva',2397346464,'siva@gmail.com','02/01/2014'
 exec InsertSP 105,'hari',9876543334,'hari@gmail.com','04/02/2023'
 drop procedure InsertSP
 --delete
+go
 CREATE procedure DeleteSP @PASSENGERID BIGINT
 as
 begin
@@ -33,6 +34,7 @@ DROP PROCEDURE DeleteSP
 
 
 --update
+go
 create procedure UpdateSP (@PASSENGERID bigint,@TICKETNUMBER bigint ,@PASSENGERNAME nvarchar(50),@PHNUMBER bigint,@EMAILID nvarchar(50),@JOURNEYDATE datetime2(7))
 as
 begin
@@ -44,6 +46,7 @@ exec UpdateSP 21 ,123,'marry',3456234567,'qwer@gmail.com','05/04/2013'
 select * from ETicket
 
 --SELECTALL
+go
 create procedure SelectSP
 as 
 begin
@@ -52,6 +55,7 @@ end
 exec SelectSP
 
 --selectbyid
+go
 create procedure SelectidSP(@PASSENGERID BIGINT)
 as 
 begin
@@ -65,6 +69,7 @@ create table Locationlist
 	LocationName nvarchar(50) NOT NULL
 )
 drop table Locationlist
+go
 create procedure addlocation(@LocationName nvarchar(50))
 AS
 BEGIN
