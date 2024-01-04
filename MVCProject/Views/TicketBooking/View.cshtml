@@ -14,7 +14,7 @@
     
 
         <thead>
-            <tr class="table-info" >
+            <tr class="table-info">
                 <th style="display:none">
                     @Html.DisplayNameFor(model => model.PassengerID)
                 </th>
@@ -33,39 +33,45 @@
                 <th>
                     @Html.DisplayNameFor(model => model.JourneyDate)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocationId)
+                </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr class="table-bordered">
-                    
-                        <td style="display:none">
-                            @Html.DisplayFor(modelItem => item.PassengerID)
-                        </td>
-                    
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TicketNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PassengerName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PHNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EmailID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.JourneyDate)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.PassengerID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.PassengerID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.PassengerID })
-                        </td>                    
-                </tr>
+            <tr class="table-bordered">
+
+                <td style="display:none">
+                    @Html.DisplayFor(modelItem => item.PassengerID)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassengerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PHNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JourneyDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationId)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PassengerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PassengerID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PassengerID })
+                </td>
+            </tr>
             }
         </tbody>
     </table>

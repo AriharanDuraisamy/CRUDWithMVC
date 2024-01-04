@@ -12,5 +12,6 @@ namespace DapperDataAccessLayer
         public TicketModel ReadbyIDSP(long PassengerID);
         public List<TicketModel> ReadSP();
         public void UpdateSP(int ticupd, TicketModel Details);
+        
     }
 }

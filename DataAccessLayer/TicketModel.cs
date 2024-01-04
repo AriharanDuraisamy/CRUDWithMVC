@@ -37,5 +37,7 @@ namespace DapperDataAccessLayer
         public string EmailID { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}") ]
         public DateTime JourneyDate { get; set; }
+        public IEnumerable<Locations> Locations { get; set; }
+        public long LocationId { get;set;}
     }
 }

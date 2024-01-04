@@ -17,138 +17,116 @@ namespace DapperDataAccessLayer
         {
             connectionString = configuration.GetConnectionString("DbConnection");
         }
-        /*public bool ValidateUser(string email, string password)
-        {
-            string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+        public void InsertSP(TicketModel Details)
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@Username", email);
-                    command.Parameters.AddWithValue("@Password", password); // Note: You should hash the password before comparing in a real scenario
+                    var con = new SqlConnection(connectionString);
+                    con.Open();
+                    var insertQuery = $"exec insertsp '{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PHNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}',{Details.LocationId}";
+                    con.Execute(insertQuery);
+                    con.Close();
 
-                    connection.Open();
-                    int count = (int)command.ExecuteScalar();
+                }
+                catch (SqlException sql)
+                {
+                    throw;
 
-                    return count > 0; // If count is greater than zero, the user with provided credentials exists
+                }
+                catch (Exception ex)
+                {
+                    throw;
                 }
             }
-        }*/
-    
 
-
-
-public void InsertSP(TicketModel Details)
-        {
-            try
+            public void DeleteSP(long PassengerID)
             {
-                var con = new SqlConnection(connectionString);
-                con.Open();
-                var insertQuery = $"exec insertsp '{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PHNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}'";
-                con.Execute(insertQuery);
-                con.Close();
+                try
+                {
+                    var con = new SqlConnection(connectionString);
+                    con.Open();
+                    var deleteQuery = $"exec deletesp {PassengerID}";
+                    con.Execute(deleteQuery);
+                    con.Close();
 
+                }
+                catch (SqlException sql)
+                {
+                    throw;
+
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
             }
-            catch (SqlException sql)
+            public List<TicketModel> ReadSP()
             {
-                throw;
+                try
+                { 
+                    var con = new SqlConnection(connectionString);
+                    con.Open();
+                    var selectQuery = $"exec selectsp";
+                    var ticket = con.Query<TicketModel>(selectQuery);
 
+                    con.Close();
+
+                    return ticket.ToList();
+                }
+
+                catch (SqlException sql)
+                {
+                    throw;
+
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
             }
-            catch (Exception ex)
+            public TicketModel ReadbyIDSP(long PassengerID)
             {
-                throw;
+                try
+                {
+                    var con = new SqlConnection(connectionString);
+                    con.Open();
+                    var selectQuery = $"exec selectidsp  {PassengerID} ";
+                    var result = con.QueryFirstOrDefault<TicketModel>(selectQuery);
+
+                    con.Close();
+
+                    return result;
+                }
+
+                catch (SqlException sql)
+                {
+                    throw;
+
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+            public void UpdateSP(int ticupd, TicketModel Details)
+            {
+                try
+                {
+                    var con = new SqlConnection(connectionString);
+                    con.Open();
+                    var updateQuery = $"exec updatesp  {ticupd} ,'{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PHNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}',{Details.LocationId}";
+                    con.Execute(updateQuery);
+
+                }
+                catch (SqlException sql)
+                {
+                    throw;
+
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
             }
         }
-
-        public void DeleteSP(long PassengerID)
-        {
-            try
-            {
-                var con = new SqlConnection(connectionString);
-                con.Open();
-                var deleteQuery = $"exec deletesp {PassengerID}";
-                con.Execute(deleteQuery);
-                con.Close();
-
-            }
-            catch (SqlException sql)
-            {
-                throw;
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-        public List<TicketModel> ReadSP()
-        {
-            try
-            { 
-                var con = new SqlConnection(connectionString);
-                con.Open();
-                var selectQuery = $"exec selectsp";
-                var ticket = con.Query<TicketModel>(selectQuery);
-
-                con.Close();
-
-                return ticket.ToList();
-            }
-
-            catch (SqlException sql)
-            {
-                throw;
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-        public TicketModel ReadbyIDSP(long PassengerID)
-        {
-            try
-            {
-                var con = new SqlConnection(connectionString);
-                con.Open();
-                var selectQuery = $"exec selectidsp  {PassengerID} ";
-                var result = con.QueryFirstOrDefault<TicketModel>(selectQuery);
-
-                con.Close();
-
-                return result;
-            }
-
-            catch (SqlException sql)
-            {
-                throw;
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-        public void UpdateSP(int ticupd, TicketModel Details)
-        {
-            try
-            {
-                var con = new SqlConnection(connectionString);
-                con.Open();
-                var updateQuery = $"exec updatesp  {ticupd} ,'{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PHNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}'";
-                con.Execute(updateQuery);
-
-            }
-            catch (SqlException sql)
-            {
-                throw;
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-    }
 }

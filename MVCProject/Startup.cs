@@ -25,6 +25,7 @@ namespace MVCProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ITicketBooking, TicketBooking>();
+            services.AddTransient<ITicketLocations, TicketLocations>();
             services.AddControllersWithViews();
         }
 
