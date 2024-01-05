@@ -30,8 +30,9 @@ namespace MVCProject.Controllers
         // GET: TicketBookingController1/Details/5
         public ActionResult Details(int id)
         {
-            var ticket = _Result.ReadbyIDSP(id);
-            return View("Details",ticket);
+            var tkt = _Result.ReadbyIDSP(id);
+            tkt.Locations = _loc.GetAllLocations();
+            return View("Details",tkt);
         }
 
         // GET: TicketBookingController1/Create
@@ -62,6 +63,7 @@ namespace MVCProject.Controllers
         public ActionResult Edit(int id)
         {
             var tkt = _Result.ReadbyIDSP(id);
+            tkt.Locations = _loc.GetAllLocations();
             return View("Edit",tkt);
         }
 

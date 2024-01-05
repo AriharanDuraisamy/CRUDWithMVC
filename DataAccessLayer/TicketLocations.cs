@@ -23,7 +23,7 @@ namespace DapperDataAccessLayer
                
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var selectQuery = $"exec selectsp ";
+                var selectQuery = $" select * from Locationlist ";
                 var products = con.Query<Locations>(selectQuery);
 
                 con.Close();

@@ -23,7 +23,7 @@ namespace DapperDataAccessLayer
                 {
                     var con = new SqlConnection(connectionString);
                     con.Open();
-                    var insertQuery = $"exec insertsp '{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PHNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}',{Details.LocationId}";
+                    var insertQuery = $"exec insertsp '{ Details.TicketNumber}','{Details.PassengerName}' ,{ Details.PHNumber} ,'{ Details.EmailID}' ,'{Details.JourneyDate}', {Details.LocationId}";
                     con.Execute(insertQuery);
                     con.Close();
 

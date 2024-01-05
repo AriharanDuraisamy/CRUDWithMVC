@@ -11,12 +11,12 @@ CREATE TABLE ETicket
 Select * from ETicket
 drop table ETicket
 go
-CREATE procedure InsertSP(@TICKETNUMBER bigint ,@PASSENGERNAME nvarchar(50),@PHNUMBER bigint,@EMAILID nvarchar(50),@JOURNEYDATE datetime2(7))
+CREATE procedure InsertSP(@TICKETNUMBER bigint ,@PASSENGERNAME nvarchar(50),@PHNUMBER bigint,@EMAILID nvarchar(50),@JOURNEYDATE datetime2(7),@LocationId bigint)
 AS
 BEGIN
-INSERT INTO ETicket values(@TICKETNUMBER,@PASSENGERNAME,@PHNUMBER,@EMAILID,@JOURNEYDATE)
+INSERT INTO ETicket values(@TICKETNUMBER,@PASSENGERNAME,@PHNUMBER,@EMAILID,@JOURNEYDATE,@LocationId)
 END
-exec InsertSP 101,'madhan',1234567890,'madhan@gmail.com','02/18/2004'
+exec InsertSP 101,'madhan',1234567890,'madhan@gmail.com','02/18/2004',2
 exec InsertSP 102,'guru',1098765433,'guru@gmail.com','03/05/2006'
 exec InsertSP 103,'sankar',8765945635,'sankar@gmail.com','05/08/2024'
 exec InsertSP 104,'siva',2397346464,'siva@gmail.com','02/01/2014'
@@ -35,15 +35,16 @@ DROP PROCEDURE DeleteSP
 
 --update
 go
-create procedure UpdateSP (@PASSENGERID bigint,@TICKETNUMBER bigint ,@PASSENGERNAME nvarchar(50),@PHNUMBER bigint,@EMAILID nvarchar(50),@JOURNEYDATE datetime2(7))
+create procedure UpdateSP (@PASSENGERID bigint,@TICKETNUMBER bigint ,@PASSENGERNAME nvarchar(50),@PHNUMBER bigint,@EMAILID nvarchar(50),@JOURNEYDATE datetime2(7),@LocationId bigint)
 as
 begin
 update ETicket 
-set TICKETNUMBER=@TICKETNUMBER,PASSENGERNAME=@PASSENGERNAME,PHNUMBER=@PHNUMBER,EMAILID=@EMAILID,JOURNEYDATE=@JOURNEYDATE where PASSENGERID=@PASSENGERID
+set TICKETNUMBER=@TICKETNUMBER,PASSENGERNAME=@PASSENGERNAME,PHNUMBER=@PHNUMBER,EMAILID=@EMAILID,JOURNEYDATE=@JOURNEYDATE ,LocationId=@LocationId where PASSENGERID=@PASSENGERID
 end
-exec UpdateSP 21 ,123,'marry',3456234567,'qwer@gmail.com','05/04/2013'
+exec UpdateSP 2 ,123,'marry',3456234567,'qwer@gmail.com','05/04/2013',1
 
 select * from ETicket
+drop procedure UpdateSP
 
 --SELECTALL
 go

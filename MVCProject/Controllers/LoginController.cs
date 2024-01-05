@@ -14,7 +14,7 @@ namespace MVCProject.Controllers
         {
             return View("LoginForm",new LoginModel());
         }
-       /* public ActionResult Login(LoginModel log)
+        /*public ActionResult Login(LoginModel log)
         {
             // Assuming you have a method to authenticate users in your data access layer
             bool isValid = DapperDataAccessLayer.ValidateUser(log.EmailID, log.Password);
