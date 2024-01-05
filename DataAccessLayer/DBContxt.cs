@@ -9,7 +9,12 @@ namespace DapperDataAccessLayer
 {
     public class DBContxt:DbContext
     {
+        public DBContxt(DbContextOptions options) : base(options)
+        {
+
+        }
+
         public DbSet<Locations> Locations { get; set; }
-        public DbSet<Registration> Registrations { get; set; }
+        public DbSet<Registration> Registration { get; set; }
     }
 }

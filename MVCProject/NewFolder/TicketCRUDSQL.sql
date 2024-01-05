@@ -41,7 +41,7 @@ begin
 update ETicket 
 set TICKETNUMBER=@TICKETNUMBER,PASSENGERNAME=@PASSENGERNAME,PHNUMBER=@PHNUMBER,EMAILID=@EMAILID,JOURNEYDATE=@JOURNEYDATE ,LocationId=@LocationId where PASSENGERID=@PASSENGERID
 end
-exec UpdateSP 2 ,123,'marry',3456234567,'qwer@gmail.com','05/04/2013',1
+exec UpdateSP 2 ,123,'marr',3456234567,'qwer@gmail.com','05/04/2013',1
 
 select * from ETicket
 drop procedure UpdateSP
@@ -69,7 +69,7 @@ create table Locationlist
 	LocationId bigint NOT NULL primary key identity(1,1),
 	LocationName nvarchar(50) NOT NULL
 )
-drop table Locationlist
+drop table  Locationlist
 go
 create procedure addlocation(@LocationName nvarchar(50))
 AS
@@ -82,3 +82,31 @@ exec  addlocation  'coimbatore'
 exec  addlocation  'bengaluru'
 drop procedure addlocation
 select * from Locationlist
+
+
+
+create table register
+(
+	RegistrationId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	UserName nvarchar(50) NOT NULL,
+	Password nvarchar(50) NOT NULL
+)
+select * from register
+go
+create procedure insertregister(@UserName nvarchar(50),@Password nvarchar(50))
+as
+begin
+INSERT INTO register values(@UserName,@Password)
+END
+exec insertregister 'hari','12345'
+
+go
+create procedure updateregister(@RegistrationId bigint, @UserName nvarchar(50),@Password nvarchar(50))
+as
+begin
+update register 
+set UserName=@UserName ,Password=@Password where RegistrationId=@RegistrationId
+end
+exec updateregister 'marry','qwer@gmail.com',1
+
+
