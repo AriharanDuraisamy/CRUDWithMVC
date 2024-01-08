@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DapperDataAccessLayer
+namespace EntityFramework
 {
     public interface ITicketRegistration
     {
-        public void Insert(Registration product);
-
-        public Registration ReadbyIDSP(long PassngerID);
+        public void Insert(Registration Register);
         public IEnumerable<Registration> GetAllRegistration();
-
         public bool Login(string username, string password);
+        public void Update(Registration register);
     }
 }

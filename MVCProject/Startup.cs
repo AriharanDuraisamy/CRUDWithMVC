@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DapperDataAccessLayer;
+using EntityFramework;
+using Microsoft.EntityFrameworkCore;
 
 namespace MVCProject
 {
@@ -24,6 +26,7 @@ namespace MVCProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Dbcontext>(x => x.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             services.AddTransient<ITicketBooking, TicketBooking>();
             services.AddTransient<ITicketLocations, TicketLocations>();
             services.AddControllersWithViews();

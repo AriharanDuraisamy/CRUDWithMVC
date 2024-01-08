@@ -5,16 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace DapperDataAccessLayer
+namespace EntityFramework
 {
-    public class DBContxt:DbContext
+    public class Dbcontext:DbContext
     {
-        public DBContxt(DbContextOptions options) : base(options)
+        public Dbcontext(DbContextOptions<Dbcontext> options) : base(options)
         {
 
         }
-
-        public DbSet<Locations> Locations { get; set; }
         public DbSet<Registration> Registration { get; set; }
     }
 }

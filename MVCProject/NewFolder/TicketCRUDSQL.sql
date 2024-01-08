@@ -85,28 +85,28 @@ select * from Locationlist
 
 
 
-create table register
-(
-	RegistrationId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
-	UserName nvarchar(50) NOT NULL,
-	Password nvarchar(50) NOT NULL
-)
-select * from register
-go
-create procedure insertregister(@UserName nvarchar(50),@Password nvarchar(50))
-as
-begin
-INSERT INTO register values(@UserName,@Password)
-END
-exec insertregister 'hari','12345'
+--create table register
+--(
+--	RegistrationId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+--	UserName nvarchar(50) NOT NULL,
+--	Password nvarchar(50) NOT NULL
+--)
+--select * from register
+--go
+--create procedure insertregister(@UserName nvarchar(50),@Password nvarchar(50))
+--as
+--begin
+--INSERT INTO register values(@UserName,@Password)
+--END
+--exec insertregister 'hari','12345'
 
-go
-create procedure updateregister(@RegistrationId bigint, @UserName nvarchar(50),@Password nvarchar(50))
-as
-begin
-update register 
-set UserName=@UserName ,Password=@Password where RegistrationId=@RegistrationId
-end
-exec updateregister 'marry','qwer@gmail.com',1
+--go
+--create procedure updateregister(@RegistrationId bigint, @UserName nvarchar(50),@Password nvarchar(50))
+--as
+--begin
+--update register 
+--set UserName=@UserName ,Password=@Password where RegistrationId=@RegistrationId
+--end
+--exec updateregister 'marry','qwer@gmail.com',1
 
 

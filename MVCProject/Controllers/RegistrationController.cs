@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EntityFramework;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,46 +8,41 @@ using System.Threading.Tasks;
 
 namespace MVCProject.Controllers
 {
-    public class TicketTemplateController : Controller
+    public class RegistrationController : Controller
     {
-        // GET: TicketTemplateController
-        public ActionResult Home()
+        private readonly ITicketRegistration Register;
+        public RegistrationController(ITicketRegistration reg)
         {
-            return View();
+            Register = reg;
         }
-        public ActionResult About()
+        // GET: RegistrationController
+        public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult Contact()
-        {
-            return View();
-        }
-        public ActionResult Services()
-        {
-            return View();
+            return View("List",Register.GetAllRegistration());
         }
 
-        // GET: TicketTemplateController/Details/5
+        // GET: RegistrationController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: TicketTemplateController/Create
+        // GET: RegistrationController/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new Registration();
+            return View("Create",model);
         }
 
-        // POST: TicketTemplateController/Create
+        // POST: RegistrationController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create( Registration detail)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                Register.Insert(detail);
+                return RedirectToAction(nameof(Create));
             }
             catch
             {
@@ -54,13 +50,13 @@ namespace MVCProject.Controllers
             }
         }
 
-        // GET: TicketTemplateController/Edit/5
+        // GET: RegistrationController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: TicketTemplateController/Edit/5
+        // POST: RegistrationController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -75,13 +71,13 @@ namespace MVCProject.Controllers
             }
         }
 
-        // GET: TicketTemplateController/Delete/5
+        // GET: RegistrationController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: TicketTemplateController/Delete/5
+        // POST: RegistrationController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

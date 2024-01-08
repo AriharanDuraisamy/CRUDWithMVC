@@ -5,21 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DapperDataAccessLayer
+namespace EntityFramework
 {
-    public class TicketRegistration :ITicketRegistration
+    public class TicketRegistration: ITicketRegistration
     {
-        private readonly DBContxt _contxt;
-        public TicketRegistration(DBContxt contxt)
+        
+        private readonly Dbcontext _contxt;
+        public TicketRegistration(Dbcontext contxt)
         {
             _contxt = contxt;
         }
-
-        public Registration ReadbyIDSP(long PassengerID)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Registration> GetAllRegistration()
         {
             throw new NotImplementedException();
@@ -55,7 +50,7 @@ namespace DapperDataAccessLayer
             }
         }
 
-        public void Update(Registration product)
+        public void Update(Registration register)
         {
             try
             {
@@ -66,6 +61,6 @@ namespace DapperDataAccessLayer
                 throw;
             }
         }
-    }   
+    }
 }
 
