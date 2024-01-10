@@ -41,7 +41,9 @@
                 <label><input type="checkbox"> Remember me</label>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
-            <button type="submit" class="btn btn-outline-success">Register</button>
+
+            <div class="card-subtitle"> <a class="btn btn-outline-success" asp-controller="TicketRegistration" asp-action="Create" >Register</a></div>
+            @*<a asp-controller="Registration" asp-action="Create"  class="btn btn-outline-success">Register</a>*@
         </div>
     </form>
 </body>

@@ -15,10 +15,7 @@ namespace EntityFramework
         {
             _contxt = contxt;
         }
-        public IEnumerable<Registration> GetAllRegistration()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void Insert(Registration register)
         {

@@ -9,7 +9,7 @@ namespace EntityFramework
     public interface ITicketRegistration
     {
         public void Insert(Registration Register);
-        public IEnumerable<Registration> GetAllRegistration();
+        /*public IEnumerable<Registration> GetAllRegistration();*/
         public bool Login(string username, string password);
         public void Update(Registration register);
     }

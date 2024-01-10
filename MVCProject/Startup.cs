@@ -29,6 +29,7 @@ namespace MVCProject
             services.AddDbContext<Dbcontext>(x => x.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             services.AddTransient<ITicketBooking, TicketBooking>();
             services.AddTransient<ITicketLocations, TicketLocations>();
+            services.AddTransient <ITicketRegistration,TicketRegistration>();
             services.AddControllersWithViews();
         }
 
