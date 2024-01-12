@@ -84,7 +84,7 @@ drop procedure addlocation
 select * from Locationlist
 
 
-
+select * from Registration
 --create table register
 --(
 --	RegistrationId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -93,13 +93,13 @@ select * from Locationlist
 --)
 --select * from register
 --go
---create procedure insertregister(@UserName nvarchar(50),@Password nvarchar(50))
---as
---begin
---INSERT INTO register values(@UserName,@Password)
---END
---exec insertregister 'hari','12345'
-
+create procedure insertregister(@Emailid nvarchar(50),@Password nvarchar(50))
+as
+begin
+INSERT INTO registration values(@Emailid,@Password)
+END
+exec insertregister 'qwer@gmail.com','12345'
+drop procedure insertregister
 --go
 --create procedure updateregister(@RegistrationId bigint, @UserName nvarchar(50),@Password nvarchar(50))
 --as

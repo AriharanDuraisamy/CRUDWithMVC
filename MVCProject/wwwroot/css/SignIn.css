@@ -1,0 +1,41 @@
+﻿body {
+    
+    height: 10000%;
+    
+}
+
+body {
+    display:grid;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: green;
+    background-image:src("/images/webpage-layout-design.png")
+}
+
+.form-signin {
+    width: 500%;
+    max-width: 330px;
+    padding: 30px;
+    margin-left:750px;
+}
+
+    .form-signin .checkbox {
+        font-weight:bold;
+    }
+
+    .form-signin .form-floating:focus-within {
+        z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+        margin-bottom: 10px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }

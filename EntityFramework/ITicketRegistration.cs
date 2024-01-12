@@ -10,7 +10,7 @@ namespace EntityFramework
     {
         public void Insert(Registration Register);
         /*public IEnumerable<Registration> GetAllRegistration();*/
-        public bool Login(string username, string password);
+        public bool Login(Registration check);
         public void Update(Registration register);
     }
 }

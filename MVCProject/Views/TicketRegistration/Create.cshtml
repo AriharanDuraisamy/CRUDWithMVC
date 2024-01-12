@@ -3,20 +3,23 @@
 @{
     ViewData["Title"] = "Create";
     Layout = null;
+
 }
 
-<h1>Create</h1>
+<h1>Registration</h1>
 
-<h4>Registration</h4>
+<h4>Register and njoy</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+                <label asp-for="Emailid" class="control-label"></label>
+                <input asp-for="Emailid" class="form-control" />
+
+                <span asp-validation-for="Emailid" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
@@ -24,14 +27,15 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="card-subtitle"> <button class="btn btn-outline-success" asp-controller="TicketRegistration" asp-action="Create">Submit</button></div>
+                @*<input type="submit" value="Submit" class="btn btn-primary" />*@
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-controller="Login" asp-action="LoginForm">Back to Login</a>
+    <a asp-controller="Login" asp-action="Login">Back to Login</a>
 </div>
 
 @section Scripts {

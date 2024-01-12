@@ -40,10 +40,19 @@ namespace MVCProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create( Registration detail)
         {
+            var model = Register.Login(detail);
             try
             {
-                Register.Insert(detail);
-                return RedirectToAction("Index");
+                if(model==true)
+                {
+                    Register.Insert(detail);
+                    return Redirect("Login");
+                }
+                else
+                {
+                    return View("Create");
+                }
+               
             }
             catch
             {
