@@ -13,23 +13,32 @@ namespace MVCProject.Controllers
 {
     public class TicketRegistrationController : Controller
     {
-        private readonly ITicketRegistration Register;
+        private readonly ITicketRegistration _Register;
         private readonly string _connectionstring;
         public TicketRegistrationController(ITicketRegistration reg, IConfiguration configuration)
         {
-            Register = reg;
+            _Register = reg;
             _connectionstring = configuration.GetConnectionString("DbConnection");
         }
         // GET: RegistrationController
-       /* public ActionResult Index()
+        public ActionResult Index()
         {
-            return View("List",Register.GetAllRegistration());
-        }*/
+            var Results = _Register.GetAllRegistration();
+            return View("List",Results);
+        }
         // GET: RegistrationController/Create
-        public ActionResult Create()
+        public ActionResult Create(Registration value)
         {
-            var model = new Registration();
-            return View("Create", model);
+            var model = _Register.Security(value);
+            if (model == true)
+            {
+                var ans = _Register.GetAllRegistration(value);
+                return View("Create", ans);
+            }
+            else
+            {
+                return Redirect("/Login/Login");
+            }
 
            /* var model = new Registration();
             return View("Create",model);*/
@@ -38,19 +47,20 @@ namespace MVCProject.Controllers
         // POST: RegistrationController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Registration detail)
+        public ActionResult Creates( Registration detail)
         {
-            var model = Register.Login(detail);
+            var model = _Register.Login(detail);
             try
             {
                 if(model==true)
                 {
-                    Register.Insert(detail);
-                    return Redirect("Login");
+                    _Register.Insert(detail);
+                    return Redirect("/Login/Login");
                 }
                 else
                 {
-                    return View("Create");
+                    
+                    return View( "Create");
                 }
                
             }
@@ -59,22 +69,11 @@ namespace MVCProject.Controllers
                 return View();
             }
         }
-
-        private object LoginForm()
+        public ActionResult Details(long id)
         {
-            throw new NotImplementedException();
+            var tkt =_Register.ReadbyID(id);
+            return View("Details", tkt);
         }
-
-        public IActionResult Login()
-        {
-            return View("LoginForm", new LoginModel());
-        }
-        /* public ActionResult Registers()
-         {
-             Register.GetAllRegistration();
-             return View("");
-         }*/
     }
-
 }
 

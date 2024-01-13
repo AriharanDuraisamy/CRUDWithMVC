@@ -42,7 +42,9 @@
     <!-- Custom styles for this template -->
     <link href="~/css/SignIn.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
     <!--jQuery library -->
     @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>*@
     <!-- Latest compiled JavaScript -->
@@ -50,22 +52,20 @@
     @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">*@
 </head>
 <body class="text-center">
-   <div class="col-md-6 col-lg-5 d-none d-md-block">
-        <img src="/images/fingerprint.jpg" class="card-img-overlay" style="border-radius: 1rem 0 0 1rem; height:500px; width:500px; margin-left:270px;" />
-   </div>
+   
     <main class="form-signin">
         <form class="container">
             <img class="mb-4" src="~/images/tickets.jpg" alt="AD" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="form-floating">
-                <label for="floatingInput">Email address</label>
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <label asp-for="EmailID">Email address</label>
+                <input asp-for="EmailID" class="form-control" id="floatingInput" placeholder="name@example.com" required>
 
             </div>
             <div class="form-floating">
-                <label for="floatingPassword">Password</label>
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password" required>
 
             </div>
 
@@ -74,8 +74,8 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <div class="card-subtitle"> <button class="btn btn-outline-success" asp-controller="Home" asp-action="Index">Login</button></div><br />
-            <div class="card-subtitle"> Don't have an account?<a class="alert-danger" asp-controller="TicketRegistration" asp-action="Create">Register</a></div>
+            <div class="card-subtitle"> <button class="btn btn-outline-success" asp-controller="TicketRegistration" asp-action="Create">Login</button></div><br />
+            <div class="card-subtitle"> Don't have an account?<a class="alert-danger" asp-controller="TicketRegistration" asp-action="Creates">Register</a></div>
             @*<button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>*@
         <p class="mt-5 mb-3 text-muted">&copy;ADTickets[India] All rights reserved</p>
         </form>

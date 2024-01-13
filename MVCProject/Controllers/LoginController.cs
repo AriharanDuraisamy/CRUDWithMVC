@@ -14,6 +14,21 @@ namespace MVCProject.Controllers
         {
             return View("LoginForm",new LoginModel());
         }
+        /*public ActionResult Create(Registration value)
+        {
+            var model = _Registers.Security(value);
+            if (model == true)
+            {
+                var ans = _Registers.GetAllRegistration(value);
+                return View("Create", ans);
+            }
+
+            *//* var model = new Registration();
+             return View("Create",model);*//*
+        }
+*/
+
+
         /*public ActionResult Login(LoginModel log)
         {
             // Assuming you have a method to authenticate users in your data access layer

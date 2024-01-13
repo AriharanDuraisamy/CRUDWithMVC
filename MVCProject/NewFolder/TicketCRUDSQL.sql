@@ -84,7 +84,9 @@ drop procedure addlocation
 select * from Locationlist
 
 
-select * from Registration
+select top 10 * from Registration
+select top 10 * from (SELECT * FROM Registration
+ORDER BY RegistrationId DEC);
 --create table register
 --(
 --	RegistrationId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
