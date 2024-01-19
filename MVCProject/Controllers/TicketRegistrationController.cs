@@ -26,14 +26,18 @@ namespace MVCProject.Controllers
             var Results = _Register.GetAllRegistration();
             return View("List",Results);
         }
+        public ActionResult Register()
+        {
+            return View("Create");
+        }
         // GET: RegistrationController/Create
         public ActionResult Create(Registration value)
         {
             var model = _Register.Security(value);
             if (model == true)
             {
-                var ans = _Register.GetAllRegistration(value);
-                return View("Create", ans);
+                var ans = _Register.GetAllRegistration();
+                return View("List", ans);
             }
             else
             {

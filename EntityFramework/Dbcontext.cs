@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EntityFramework
 {
-    public class Dbcontext:DbContext
+    public class Dbcontxt:DbContext
     {
-        public Dbcontext(DbContextOptions<Dbcontext> options) : base(options)
+        public Dbcontxt(DbContextOptions<Dbcontxt> options) : base(options)
         {
 
         }

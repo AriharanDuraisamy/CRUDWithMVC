@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityFramework.Migrations
 {
-    [DbContext(typeof(Dbcontext))]
+    [DbContext(typeof(Dbcontxt))]
     [Migration("20240108055616_Hari")]
     partial class Hari
     {

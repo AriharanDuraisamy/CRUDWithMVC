@@ -26,11 +26,12 @@ namespace MVCProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Dbcontext>(x => x.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            services.AddControllersWithViews();
+            services.AddDbContext<Dbcontxt>(x => x.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             services.AddTransient<ITicketBooking, TicketBooking>();
             services.AddTransient<ITicketLocations, TicketLocations>();
             services.AddTransient <ITicketRegistration,TicketRegistration>();
-            services.AddControllersWithViews();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

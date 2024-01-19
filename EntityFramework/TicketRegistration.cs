@@ -9,12 +9,12 @@ namespace EntityFramework
 {
     public class TicketRegistration: ITicketRegistration
     {
-        private readonly ITicketRegistration _Ticreg;
-        private readonly Dbcontext _contxt;
-        public TicketRegistration(Dbcontext contxt, ITicketRegistration Ticreg)
+        
+        private readonly Dbcontxt _contxt;
+        public TicketRegistration(Dbcontxt contxt)
         {
             _contxt = contxt;
-            _Ticreg = Ticreg;
+            
         }
         
 
@@ -52,7 +52,7 @@ namespace EntityFramework
         }
         public bool Security(Registration value)
         {
-            var final = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registrastion where emailid='{value.Emailid}' and password='{value.Password}'").ToList();
+            var final = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration where emailid='{value.Emailid}' and password='{value.Password}'").ToList();
             if(final.Count == 1)
             {
                 return true;
