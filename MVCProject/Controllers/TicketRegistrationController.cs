@@ -78,6 +78,41 @@ namespace MVCProject.Controllers
             var tkt =_Register.ReadbyID(id);
             return View("Details", tkt);
         }
+        public ActionResult Edit(long id)
+        {
+            var tkt = _Register.ReadbyID(id);
+            return View("Edit", tkt);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(long id, Registration value)
+        {
+            _Register.Update (id,value);
+            var ans = _Register.GetAllRegistration();
+            return View("List", ans);
+        }
+
+
+        public ActionResult Home()
+        {
+
+           return Redirect("/Home/Index");
+        }
+        public ActionResult Delete(long id)
+        {
+            var tkt = _Register.ReadbyID(id);
+            return View("Delete", tkt);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Deletebyid(long RegistrationId)
+        {
+            _Register.Delete (RegistrationId);
+            var ans = _Register.GetAllRegistration();
+            return View("List",ans);
+        }
     }
 }
 

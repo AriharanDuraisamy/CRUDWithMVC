@@ -63,11 +63,11 @@ namespace EntityFramework
             }
         }
 
-        public void Update(Registration register)
+        public void Update(long id, Registration register)
         {
             try
             {
-                _contxt.Database.ExecuteSqlRaw("sp");
+                 var result= _contxt.Database.ExecuteSqlRaw($" update Registration set Emailid='{register.Emailid}',Password='{register.Password}' where RegistrationId={id} ");
             }
             catch (Exception ex)
             {
@@ -92,12 +92,12 @@ namespace EntityFramework
         {
             throw new NotImplementedException();
         }
-        public List< Registration> ReadbyID(long Registrationid)
+        public Registration ReadbyID(long Registrationid)
         {
             try
             {
-                var result = _contxt.Registration.FromSqlRaw($"select * from Registration where RegistrationId={Registrationid}");
-                return result.ToList();
+                var result = _contxt.Registration.FromSqlRaw<Registration>($"select * from Registration where RegistrationId={Registrationid}");
+                return result.ToList().FirstOrDefault();
             }
             catch(Exception)
             {
@@ -105,6 +105,12 @@ namespace EntityFramework
             }
         }
 
+        public void Delete(long Registrationid)
+        {
+            _contxt.Database.ExecuteSqlRaw($"delete Registration where RegistrationId={Registrationid}");
+        }
+
+        
     }
 }
 
